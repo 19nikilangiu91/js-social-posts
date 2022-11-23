@@ -1,3 +1,7 @@
+// Milestone 1 -
+// Creiamo il nostro array di oggetti che rappresentano ciascun post. Ogni post dovrà avere le informazioni necessarie per stampare la relativa card: - id del post, numero progressivo da 1 a n - nome autore, - foto autore, - data in formato americano (mm-gg-yyyy), - testo del post, - immagine (non tutti i post devono avere una immagine), - numero di likes. Non è necessario creare date casualiPer le immagini va bene utilizzare qualsiasi servizio di placeholder ad es. Unsplash (https://unsplash.it/300/300?image=<id>)
+// [Qui come abbiam visto in realtà vi arriva gratis, ma dategli un occhio per capirlo e vedete se tutto combacia e torna :innocente:]
+
 const posts = [
     {
         "id": 1,
@@ -38,7 +42,7 @@ const posts = [
         "media": "https://unsplash.it/600/400?image=24",
         "author": {
             "name": "Luca Formicola",
-            "image": null
+            "image": "https://unsplash.it/300/300?image=28"
         },
         "likes": 56,
         "created": "2021-04-03"
@@ -55,3 +59,59 @@ const posts = [
         "created": "2021-03-05"
     }
 ];
+
+console.log(posts);
+
+// Andiamo a collegare il "container".
+
+const container = document.getElementById("container");
+
+console.log(container);
+
+// Milestone 2 -
+// Prendendo come riferimento il layout di esempio presente nell’html, stampiamo i post del nostro feed.
+
+
+// Andiamo a creare il nostro ciclo "foreach" per richiamare ogni singolo elemento.
+
+posts.forEach((element, index, arrey) => {
+
+    let nuovaCarta = [
+    
+    `
+    <div id= index${index} class="post">
+            <div class="post__header">
+                <div class="post-meta">                    
+                    <div class="post-meta__icon">
+                        <img class="profile-pic" src="${element.author.image}" alt="image ${index}">                    
+                    </div>
+                    <div class="post-meta__data">
+                        <div class="post-meta__author">${element.author.name}</div>
+                        <div class="post-meta__time">${element.created}</div>
+                    </div>                    
+                </div>
+            </div>
+            <div class="post__text">${element.content}</div>
+            <div class="post__image">
+                <img src="${element.media}" alt="image ${index}">
+            </div>
+            <div class="post__footer">
+                <div class="likes js-likes">
+                    <div class="likes__cta">
+                        <a class="like-button  js-like-button" href="#" data-postid="1">
+                            <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
+                            <span class="like-button__label">Mi Piace</span>
+                        </a>
+                    </div>
+                    <div class="likes__counter">
+                        Piace a <b id="like-counter-1" class="js-likes-counter">${element.likes}</b> persone
+                    </div>
+                </div> 
+            </div>            
+        </div>
+    `
+    ]
+
+    // Stampo la "nuovaCarta" nel "div.elements-container".
+    container.innerHTML += nuovaCarta;
+}); 
