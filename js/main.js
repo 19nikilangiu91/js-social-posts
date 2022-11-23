@@ -98,7 +98,7 @@ posts.forEach((element, index) => {
             <div class="post__footer">
                 <div class="likes js-likes">
                     <div class="likes__cta">
-                        <a class="like-button  js-like-button" href="#" data-postid="${index + 1}">
+                        <a class="like-button  js-like-button" data-postid="${index + 1}">
                             <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
                             <span class="like-button__label">Mi Piace</span>
                         </a>
@@ -128,9 +128,37 @@ let arreyMiPiace = [];
 
 let arreyContMiPiace = [];
 
-// Andiamo a collegare il "js-like-button".
+// Andiamo a collegare il "like-button" per tutti gli elementi.
 
-let btnLike = document.getElementsByClassName("js-like-button");
+let btnMiPiace = document.querySelectorAll('.like-button');
 
-// Andiamo a creare l'evento al "click".
+// Vado a settare il click a 0.
+
+let click = 0;
+
+// Vado a creare un ciclo "for" che percorrerà il "btnMiPiace".
+
+for (let i = 0; i < btnMiPiace.length; i++) {
+
+    // Vado a creare l'evento al "click".
+
+    btnMiPiace[i].addEventListener("click", function () {
+        
+        // Se il bottone non è cliccato vado a cliccarlo.
+        if (click === 0) {
+          click = 1;
+          arreyMiPiace[i] = 1;
+          console.log(arreyMiPiace);
+          btnMiPiace[i].classList.add("like-button--liked");
+          
+        } else {
+          click = 0;
+          arreyMiPiace [i]= 0;
+          console.log(arreyMiPiace);
+          btnMiPiace[i].classList.remove("like-button--liked");
+        }
+  });
+}
+
+
 
