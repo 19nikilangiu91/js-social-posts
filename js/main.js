@@ -136,9 +136,11 @@ let btnMiPiace = document.querySelectorAll('.like-button');
 
 let click = 0;
 
-// Vado a creare un ciclo "for" che percorrerà il "btnMiPiace".
+let miPiace = 0;
 
-for (let i = 0; i < btnMiPiace.length; i++) {
+// Vado a creare un ciclo "for" che percorrerà il ".posts".
+
+for (let i = 0; i < posts.length; i++) {
 
     // Vado a creare l'evento al "click".
 
@@ -148,13 +150,28 @@ for (let i = 0; i < btnMiPiace.length; i++) {
         if (click === 0) {
           click = 1;
           arreyMiPiace[i] = 1;
-          console.log(arreyMiPiace);
+          console.log(arreyMiPiace[i]);
+        
+          // Vado a richiamare l'id "like-counter" e incremento  e stampo l'innerHTML. 
+          document.getElementById(`like-counter-${i + 1}`).innerHTML = `${posts[i].likes + 1}`;
+          arreyContMiPiace.push(`like-counter-${i}`);
+          console.log(arreyContMiPiace);
+          
+          //  Aggiungo la classe ".like-button--liked" per il colore. 
           btnMiPiace[i].classList.add("like-button--liked");
           
+          // Vado a diselezionare il bottone.
         } else {
           click = 0;
-          arreyMiPiace [i]= 0;
-          console.log(arreyMiPiace);
+          arreyMiPiace[i]= 0;
+          console.log(arreyMiPiace[i]);
+
+          // Vado a richiamare l'id "like-counter" e decremento  e stampo l'innerHTML. 
+          document.getElementById(`like-counter-${i + 1}`).innerHTML = `${posts[i].likes - 0}`;
+          arreyContMiPiace.push(`like-counter-${i}`);
+          console.log(arreyContMiPiace);
+          
+          //Vado a diselezionare il bottone.   
           btnMiPiace[i].classList.remove("like-button--liked");
         }
   });
