@@ -115,3 +115,31 @@ posts.forEach((element, index, arrey) => {
     // Stampo la "nuovaCarta" nel "div.elements-container".
     container.innerHTML += nuovaCarta;
 }); 
+
+// Milestone 3 -
+// Se clicchiamo sul tasto “Mi Piace” cambiamo il colore al testo del bottone e incrementiamo il counter dei likes relativo.
+// Salviamo in un secondo array gli id dei post ai quali abbiamo messo il like.
+
+// Andiamo a chiamare il "js-like-button".
+
+const likeButton = document.querySelector(".js-like-button");
+console.log(likeButton);
+
+// let greenColor = document.querySelector(".js-like-button").style.color = "#0CD977";
+
+// Creo un evento al ".js-like-button".
+
+likeButton.addEventListener("click", function(){
+    
+    const newLike = posts.map((miPiace) =>{
+
+        if(miPiace.likes >= 0){
+
+            let greenColor = document.querySelector(".js-like-button").style.color = "#0CD977";
+
+            miPiace.likes ++;
+        }
+
+        
+    })
+})
