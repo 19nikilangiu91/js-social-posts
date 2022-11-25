@@ -127,7 +127,7 @@ let liked = true;
 
 // Vado a creare l'array per il "conteggioMiPiace".
 
-let arreyContMiPiace = [];
+let arreyContMiPiace = [posts.id];
 
 // Andiamo a collegare il "like-button" per tutti gli elementi.
 
