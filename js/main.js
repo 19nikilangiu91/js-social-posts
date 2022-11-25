@@ -56,6 +56,7 @@ const posts = [
             "image": "https://unsplash.it/300/300?image=29"
         },
         "likes": 95,
+        liked: true, 
         "created": "2021-03-05"
     }
 ];
@@ -120,9 +121,9 @@ posts.forEach((element, index) => {
 // Se clicchiamo sul tasto “Mi Piace” cambiamo il colore al testo del bottone e incrementiamo il counter dei likes relativo.
 // Salviamo in un secondo array gli id dei post ai quali abbiamo messo il like.
 
-// Vado a creare l'array per i "miPiace".
+// Vado a dichiarare la variabile "liked" che ho nell'oggeetto del post.
 
-let arreyMiPiace = [];
+let liked = true;
 
 // Vado a creare l'array per il "conteggioMiPiace".
 
@@ -149,8 +150,8 @@ for (let i = 0; i < posts.length; i++) {
         // Se il bottone non è cliccato vado a cliccarlo.
         if (click === 0) {
           click = 1;
-          arreyMiPiace[i] = 1;
-          console.log(arreyMiPiace[i]);
+          liked = true;
+          console.log(liked);
         
           // Vado a richiamare l'id "like-counter" e incremento  e stampo l'innerHTML. 
           document.getElementById(`like-counter-${i + 1}`).innerHTML = `${posts[i].likes + 1}`;
@@ -163,8 +164,8 @@ for (let i = 0; i < posts.length; i++) {
           // Vado a diselezionare il bottone.
         } else {
           click = 0;
-          arreyMiPiace[i]= 0;
-          console.log(arreyMiPiace[i]);
+          liked = false;
+          console.log(liked);
 
           // Vado a richiamare l'id "like-counter" e decremento  e stampo l'innerHTML. 
           document.getElementById(`like-counter-${i + 1}`).innerHTML = `${posts[i].likes - 0}`;
